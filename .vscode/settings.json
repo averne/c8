@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "**/build": true,
+        "**/out": true,
+        "roms": true,
+    }
+}
