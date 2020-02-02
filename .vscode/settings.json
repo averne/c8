@@ -3,5 +3,6 @@
         "**/build": true,
         "**/out": true,
         "roms": true,
+        "tests": true
     }
 }
