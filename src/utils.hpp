@@ -31,15 +31,15 @@
 #define UNUSED(x) ((void)(x))
 
 #ifdef DEBUG
-#   define LOG(fmt, ...)    printf(fmt, ##__VA_ARGS__)
+#   define LOG(...)     printf(__VA_ARGS__)
 #else
-#   define LOG(...)         ({})
+#   define LOG(...)     do { } while(false)
 #endif
 
-#define TRACE(fmt, ...)     LOG("[TRACE]: " fmt, ##__VA_ARGS__)
-#define INFO(fmt, ...)      LOG("[INFO]:  " fmt, ##__VA_ARGS__)
-#define ERROR(fmt, ...)     LOG("[ERROR]: " fmt, ##__VA_ARGS__)
-#define FATAL(fmt, ...)     LOG("[FATAL]: " fmt, ##__VA_ARGS__)
+#define TRACE(...)      LOG("[TRACE]: " __VA_ARGS__)
+#define INFO(...)       LOG("[INFO]:  " __VA_ARGS__)
+#define ERROR(...)      LOG("[ERROR]: " __VA_ARGS__)
+#define FATAL(...)      LOG("[FATAL]: " __VA_ARGS__)
 
 namespace c8::utils {
 

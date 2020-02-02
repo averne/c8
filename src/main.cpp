@@ -45,12 +45,15 @@
 using namespace std::chrono_literals;
 
 static inline void print_usage(char *progname) {
+#ifndef DEBUG
+    UNUSED(progname);
+#endif
     FATAL("Usage: %s [-d] rom\n", progname);
     exit(EXIT_FAILURE);
 }
 
-int main(int argc, char **argv, char **envp) {
-    char *rom_path;
+int main(int argc, char **argv) {
+    char *rom_path = nullptr;
     bool disassemble = false;
 
     INFO("Starting\n");

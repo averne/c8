@@ -34,6 +34,7 @@ using reg_lim = std::numeric_limits<std::uint8_t>;
 
 // Instruction implementations
 void Instruction::execute(Chip8 &c) const {
+    UNUSED(c);
     ERROR("Unknown instruction\n");
 }
 
@@ -46,6 +47,7 @@ void Ret::execute(Chip8 &c) const {
 }
 
 void Sys::execute(Chip8 &c) const {
+    UNUSED(c);
     // Instruction deprecated
     // c.regs.PC = op.addr() - 2;
 }

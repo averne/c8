@@ -34,6 +34,7 @@ struct Opcode {
     std::uint16_t value = 0;
 
     constexpr inline Opcode() noexcept { }
+    constexpr inline Opcode(const Opcode &op) noexcept: value(op.value) { }
     explicit constexpr inline Opcode(const std::uint16_t val) noexcept: value(val) { }
 
     constexpr inline operator const std::uint16_t &() const noexcept {
@@ -124,6 +125,8 @@ static constexpr inline std::uint16_t mask_2 = 0xf00f;
 
 struct Instruction {
     constexpr inline Instruction(Opcode op): op(op) { }
+    virtual ~Instruction() = default;
+
     virtual void execute(Chip8 &chip) const;
     virtual void print() const;
 

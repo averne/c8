@@ -52,6 +52,7 @@ int initialize(std::uint8_t &sound_timer) {
     want.samples  = 2048;
     want.userdata = nullptr;
     want.callback = +[](void *userdata, std::uint8_t *data, int length) {
+        UNUSED(userdata);
         for (int i = 0; i < length / 2; ++i, ++impl::sample_nr) {
             float time = static_cast<float>(impl::sample_nr) / 44100.0f;
             reinterpret_cast<std::int16_t *>(data)[i] = 28000.0f * std::sin(2.0f * M_PI * 441.0f * time);
