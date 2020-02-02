@@ -4,10 +4,10 @@ Chip-8 emulator & disassembler with ncurses
 # Images
 [Video](https://i.imgur.com/IwbRz1g.mp4)
 <p float="left">
-  <img src="https://i.imgur.com/23L8Hli.png" width="400" />
-  <img src="https://i.imgur.com/bcFcDYV.png" width="400" />
-  <img src="https://i.imgur.com/EGdF0Bm.png" width="400" />
-  <img src="https://i.imgur.com/FkWnIQ2.png" width="400" />
+  <img src="https://i.imgur.com/534MML6.png" width="400" />
+  <img src="https://i.imgur.com/EsQdKm7.png" width="400" />
+  <img src="https://i.imgur.com/tkIl9f5.png" width="400" />
+  <img src="https://i.imgur.com/Ypi1Ty9.png" width="400" />
 </p>
 
 # Using
