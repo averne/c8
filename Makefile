@@ -8,7 +8,7 @@ CUSTOM_LIBS       =
 
 DEFINES           =
 ARCH              =    -march=native -fpie
-FLAGS             =    -Wall -pipe `sdl2-config --cflags`
+FLAGS             =    -Wall -Wextra -Wpedantic -pipe `sdl2-config --cflags`
 CFLAGS            =    -std=gnu11
 CXXFLAGS          =    -std=gnu++17
 ASFLAGS           =
