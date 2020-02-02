@@ -25,7 +25,7 @@ namespace c8::win {
 
 Window::Window(): win(initscr()),
         pause_win(newwin(pause_win_height, pause_win_witdh, pause_win_y, pause_win_x)) {
-    wresize(this->win, height + 2, width + 2);
+    wresize(this->win, window_height, window_width);
     cbreak();
     noecho();
     nodelay(stdscr, true);
@@ -59,7 +59,8 @@ void Window::update() {
             auto px = this->buf[y * width + x];
             if (px)
                 attron(A_REVERSE);
-            mvwaddch(this->win, y + 1, x + 1, ' ');
+            mvwaddch(this->win, y + 1, 2 * x + 1, ' ');
+            mvwaddch(this->win, y + 1, 2 * x + 2, ' ');
             if (px)
                 attroff(A_REVERSE);
         }
