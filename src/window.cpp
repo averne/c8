@@ -24,7 +24,7 @@ using namespace std::chrono_literals;
 namespace c8::win {
 
 Window::Window(): win(initscr()),
-        pause_win(newwin(pause_win_height, pause_win_witdh, pause_win_y, pause_win_x)) {
+        pause_win(newwin(pause_win_height, pause_win_width, pause_win_y, pause_win_x)) {
     wresize(this->win, window_height, window_width);
     cbreak();
     noecho();
@@ -86,9 +86,8 @@ bool Window::apply_sprite(const Sprite &sprite, std::uint8_t x, std::uint8_t y) 
         for (std::uint8_t sprite_x = 0; sprite_x < 7; ++sprite_x) {
             auto &old_px = this->buf[width * ((y + sprite_y) % height) + (x + sprite_x) % width];
             auto  new_px = !!(sprite[sprite_y] & (1 << (7 - sprite_x)));
-            if (old_px && new_px)
-                collision = true;
-            old_px ^= new_px;
+            collision |= old_px && new_px;
+            old_px    ^= new_px;
         }
     }
     return collision;

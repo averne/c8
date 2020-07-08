@@ -33,8 +33,8 @@ constexpr static std::uint8_t window_width  = width * 2 + 2;
 constexpr static std::uint8_t window_height = height + 2;
 
 constexpr static std::uint8_t pause_win_height = 5;
-constexpr static std::uint8_t pause_win_witdh  = 14;
-constexpr static std::uint8_t pause_win_x      = (window_width  + 2 - pause_win_witdh)  / 2;
+constexpr static std::uint8_t pause_win_width  = 14;
+constexpr static std::uint8_t pause_win_x      = (window_width  + 2 - pause_win_width)  / 2;
 constexpr static std::uint8_t pause_win_y      = (window_height + 2 - pause_win_height) / 2;
 
 using Buffer = std::array<std::uint8_t, width * height>;
