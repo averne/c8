@@ -1,5 +1,5 @@
 TARGET            =    c8
-EXTENSION         =    elf
+EXTENSION         =
 OUT               =    out
 BUILD             =    build
 SOURCES           =    src
@@ -51,8 +51,8 @@ DEBUG_OFILES      =    $(CFILES:%=$(BUILD)/%-dbg.o) $(CPPFILES:%=$(BUILD)/%-dbg.
 DFILES            =    $(RELEASE_OFILES:.o=.d) $(DEBUG_OFILES:.o=.d)
 
 LIBS_TARGET       =    $(shell find $(addsuffix /lib,$(CUSTOM_LIBS)) -name "*.a" 2>/dev/null)
-RELEASE_TARGET    =    $(if $(OUT:=), $(OUT)/$(TARGET).$(EXTENSION), .$(OUT)/$(TARGET).$(EXTENSION))
-DEBUG_TARGET      =    $(if $(OUT:=), $(OUT)/$(TARGET)-dbg.$(EXTENSION), .$(OUT)/$(TARGET)-dbg.$(EXTENSION))
+RELEASE_TARGET    =    $(if $(OUT:=), $(OUT)/$(TARGET)$(EXTENSION), .$(OUT)/$(TARGET)$(EXTENSION))
+DEBUG_TARGET      =    $(if $(OUT:=), $(OUT)/$(TARGET)-dbg$(EXTENSION), .$(OUT)/$(TARGET)-dbg$(EXTENSION))
 
 REL_DEFINES_FLAGS =    $(addprefix -D,$(RELEASE_DEFINES))
 DBG_DEFINES_FLAGS =    $(addprefix -D,$(DEBUG_DEFINES))

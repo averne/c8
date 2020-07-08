@@ -7,7 +7,7 @@
             "request": "launch",
             "preLaunchTask": "debug",
             "externalConsole": false,
-            "program": "${workspaceRoot}/out/c8-dbg.elf",
+            "program": "${workspaceRoot}/out/c8-dbg",
             "args": [
                 "roms/PONG.ch8"
             ],
