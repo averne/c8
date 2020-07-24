@@ -83,7 +83,7 @@ void Window::clear() {
 bool Window::apply_sprite(const Sprite &sprite, std::uint8_t x, std::uint8_t y) {
     bool collision = false;
     for (std::uint8_t sprite_y = 0; sprite_y < sprite.size(); ++sprite_y) {
-        for (std::uint8_t sprite_x = 0; sprite_x < 7; ++sprite_x) {
+        for (std::uint8_t sprite_x = 0; sprite_x < 8; ++sprite_x) {
             auto &old_px = this->buf[width * ((y + sprite_y) % height) + (x + sprite_x) % width];
             auto  new_px = !!(sprite[sprite_y] & (1 << (7 - sprite_x)));
             collision |= old_px && new_px;
