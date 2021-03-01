@@ -31,15 +31,18 @@ using namespace std::chrono_literals;
 
 namespace impl {
 
+#ifndef __MINGW32__
 inline int sample_nr;
 inline SDL_AudioDeviceID dev;
 inline SDL_AudioSpec     spec;
 inline std::thread      audio_thread;
 inline std::atomic_bool audio_thread_should_stop = false;
+#endif
 
 } // namespace impl
 
 int initialize(std::uint8_t &sound_timer) {
+#ifndef __MINGW32__
     if (auto rc = SDL_InitSubSystem(SDL_INIT_AUDIO); rc != 0) {
         ERROR("Failed to init audio: %#x - %s\n", rc, SDL_GetError());
         return rc;
@@ -75,15 +78,18 @@ int initialize(std::uint8_t &sound_timer) {
         }
     });
 
+#endif
     return 0;
 }
 
 void finalize() {
+#ifndef __MINGW32__
     impl::audio_thread_should_stop = true;
     impl::audio_thread.join();
 
     SDL_CloseAudio();
     SDL_QuitSubSystem(SDL_INIT_AUDIO);
+#endif
 }
 
 } // namespace c8::audio

@@ -13,7 +13,23 @@
             "compilerPath": "/bin/gcc",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "linux-gcc-x64"
+        },
+        {
+            "name": "Windows",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\msys64\\mingw64\\include\\SDL2",
+                "C:\\msys64\\mingw64\\include\\ncursesw"
+            ],
+            "defines": [
+                "DEBUG",
+                "_REENTRANT"
+            ],
+            "compilerPath": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4

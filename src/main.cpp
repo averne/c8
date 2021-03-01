@@ -20,6 +20,7 @@
 #include <curses.h>
 #include <signal.h>
 #include <unistd.h>
+#include <SDL.h>
 
 #include "chip8.hpp"
 #include "rom.hpp"

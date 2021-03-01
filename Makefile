@@ -7,13 +7,18 @@ INCLUDES          =    include
 CUSTOM_LIBS       =
 
 DEFINES           =
-ARCH              =    -march=native -fpie
-FLAGS             =    -Wall -Wextra -Wpedantic -pipe `sdl2-config --cflags`
+ARCH              =    -march=native
+FLAGS             =    -Wall -Wextra -Wpedantic -pipe `pkg-config --cflags ncursesw` `pkg-config --cflags sdl2`
 CFLAGS            =    -std=gnu11
 CXXFLAGS          =    -std=gnu++17
 ASFLAGS           =
-LDFLAGS           =    -Wl,-pie `sdl2-config --libs`
-LINKS             =    -lncurses -lpthread
+LDFLAGS           =
+LINKS             =    -pthread `pkg-config --libs ncursesw` `pkg-config --libs sdl2`
+
+ifeq ($(OS),Windows_NT)
+LDFLAGS          +=    -static -static-libgcc
+LINKS            +=    `sdl2-config --static-libs`
+endif
 
 RELEASE_DEFINES   =    $(DEFINES) NDEBUG=1
 RELEASE_FLAGS     =    $(FLAGS) -O2 -ffunction-sections -fdata-sections -flto
