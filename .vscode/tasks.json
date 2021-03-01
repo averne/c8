@@ -9,6 +9,12 @@
                 "release",
                 "-j$(nproc)"
             ],
+            "windows": {
+                "args": [
+                    "release",
+                    "-j${env:NUMBER_OF_PROCESSORS}"
+                ]
+            },
             "presentation": {
                 "reveal": "always",
                 "panel": "shared",
@@ -27,6 +33,12 @@
                 "debug",
                 "-j$(nproc)"
             ],
+            "windows": {
+                "args": [
+                    "debug",
+                    "-j${env:NUMBER_OF_PROCESSORS}"
+                ]
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -72,7 +84,10 @@
                 "debug"
             ],
             "type": "shell",
-            "command": "${workspaceFolder}/out/c8-dbg.elf",
+            "command": "${workspaceFolder}/out/c8-dbg",
+            "windows": {
+                "command": "${workspaceFolder}/out/c8-dbg.exe"
+            },
             "args": [
                 "roms/PONG.ch8"
             ],

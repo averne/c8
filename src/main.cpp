@@ -20,6 +20,11 @@
 #include <curses.h>
 #include <signal.h>
 #include <unistd.h>
+#include <SDL.h>
+
+#ifdef __MINGW32__
+#   include <synchapi.h>
+#endif
 
 #include "chip8.hpp"
 #include "rom.hpp"
@@ -71,10 +76,16 @@ int main(int argc, char **argv) {
         }
     }
 
+    constexpr auto sleep_duration = 5ms;
+
     auto chip = c8::Chip8(rom.get_code());
     while (true) {
         chip.cycle();
-        std::this_thread::sleep_for(2ms);
+#ifdef __MINGW32__
+        Sleep(sleep_duration.count()); // For some reason std::this_thread::sleep_for on windows is unreliable
+#else
+        std::this_thread::sleep_for(sleep_duration);
+#endif
     }
 
     return EXIT_SUCCESS;

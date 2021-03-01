@@ -18,6 +18,7 @@
 #pragma once
 
 #include <cstdint>
+#include <cmath>
 #include <atomic>
 #include <thread>
 #include <SDL.h>
@@ -40,6 +41,10 @@ inline std::atomic_bool audio_thread_should_stop = false;
 } // namespace impl
 
 int initialize(std::uint8_t &sound_timer) {
+#ifdef __MINGW32__
+    putenv("SDL_AUDIODRIVER=DirectSound");
+#endif
+
     if (auto rc = SDL_InitSubSystem(SDL_INIT_AUDIO); rc != 0) {
         ERROR("Failed to init audio: %#x - %s\n", rc, SDL_GetError());
         return rc;

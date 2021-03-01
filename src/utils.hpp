@@ -43,7 +43,7 @@
 
 namespace c8::utils {
 
-static inline FILE *open_file(const std::string &path, const std::string &mode = "r") {
+static inline FILE *open_file(const std::string &path, const std::string &mode = "rb") {
     FILE *fp = fopen(path.c_str(), mode.c_str());
     if (!fp)
         ERROR("Failed to open %s\n", path.c_str());
